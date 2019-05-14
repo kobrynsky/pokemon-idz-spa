@@ -25,13 +25,14 @@
 .login-link {
     color: var(--text-color)!important;
     font-size: 200%!important;
-    padding-right: 10%!important;
+    /* padding-right: 10%!important; */
     display: inline-block;
     justify-content: center;
     align-items: center;
 }
 
 .login-img{
+    padding-left: 5%!important;
     margin-top: 5px!important;
     text-align: center!important;
     align-items: center!important;

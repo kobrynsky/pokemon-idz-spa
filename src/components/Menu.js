@@ -30,8 +30,8 @@ export default class Menu extends React.Component {
   }
   render() {
     return (
-      <div>
-        <Navbar className="navbar" color="dark" light expand="md">
+      <React.Fragment>
+        <Navbar className="navbar" color="dark" expand="md">
           <NavbarBrand className="brand" href="/">
             <Media className="logo" src={Logo} alt="pokemon_logo" />
             <Label className="logo-label">pokemon idź</Label>
@@ -46,7 +46,7 @@ export default class Menu extends React.Component {
             </Nav>
           </Collapse>
         </Navbar>
-      </div>
+      </React.Fragment>
     );
   }
 }
