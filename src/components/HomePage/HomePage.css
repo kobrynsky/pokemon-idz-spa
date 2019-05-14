@@ -1,47 +1,45 @@
 body {
-    background-color: black;
+  background-color: black;
 }
 
-.pokemon-home{
-    min-height: 80%;
-    min-width: 1024px;
-      
-    /* Set up proportionate scaling */
-    width: 800%;
-    height: auto;
-      
-    /* Set up positioning */
-    position: fixed;
-    top: 0;
-    left: 0;
+.pokemon-home {
+  min-height: 80%;
+  min-width: 1024px;
 
-    padding-top: 10vmin;
+  /* Set up proportionate scaling */
+  width: 800%;
+  height: auto;
+
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  padding-top: 10vmin;
 }
 
-.welcome-text{
-
-    align-items: center;
-    justify-content: center;
-    font-size: calc(40px + 2vmin);
-    text-align: center;
-    color: white;
-    color: -webkit-linear-gradient(#eee, #333);
-    display: flex;
-    flex-direction: column;
-
+.welcome-text {
+  align-items: center;
+  justify-content: center;
+  font-size: calc(40px + 2vmin);
+  text-align: center;
+  color: white;
+  color: -webkit-linear-gradient(#eee, #333);
+  display: flex;
+  flex-direction: column;
 }
 
-.welcome-text-wrapper{
-    position: absolute;
-    top: 25%;
-    left: 25%;
-    background:rgba(33, 37, 41, 0.9);
-    border-radius: 5%;
-    padding: 5%;
+.welcome-text-wrapper {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  background: rgba(33, 37, 41, 0.9);
+  border-radius: 5%;
+  padding: 5%;
 }
 
-.home-page{
-    position: relative;
-    align-items: center;
-    justify-content: center;
+.home-page {
+  position: relative;
+  align-items: center;
+  justify-content: center;
 }

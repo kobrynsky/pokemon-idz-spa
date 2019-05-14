@@ -12,7 +12,7 @@ import {
   NavLink,
   Media,
   Label
- } from 'reactstrap';
+} from 'reactstrap';
 
 
 export default class Menu extends React.Component {
@@ -42,7 +42,7 @@ export default class Menu extends React.Component {
             <Nav className="ml-auto" navbar>
               <NavItem className="login">
                 <NavLink className="login-link" href="/login" onClick={this.openLoginModal}>login</NavLink>
-                <Media className="login-img" src={LoginImg}  alt="login_image" />
+                <Media className="login-img" src={LoginImg} alt="login_image" />
                 <NavLink className="register-link" href="/register/">register</NavLink>
               </NavItem>
             </Nav>

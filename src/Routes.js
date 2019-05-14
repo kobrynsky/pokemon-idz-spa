@@ -6,10 +6,10 @@ import AppliedRoute from "./components/Others/AppliedRoute";
 import HomePage from "./components/HomePage/HomePage";
 
 export default ({ childProps }) =>
-<BrowserRouter>
-  <Switch>
-    <AppliedRoute path="/" exact component={HomePage} props={childProps} />
-    <AppliedRoute path="/login" exact component={Login} props={childProps} />
-    <Route component={NotFound} />
-  </Switch>
-</BrowserRouter>;
+    <BrowserRouter>
+        <Switch>
+            <AppliedRoute path="/" exact component={HomePage} props={childProps} />
+            <AppliedRoute path="/login" exact component={Login} props={childProps} />
+            <Route component={NotFound} />
+        </Switch>
+    </BrowserRouter>;

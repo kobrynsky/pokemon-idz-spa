@@ -12,7 +12,7 @@ import Routes from "./Routes";
 class App extends Component {
   constructor(props) {
     super(props);
-  
+
     this.state = {
       isAuthenticated: false,
       id: 0,
@@ -20,12 +20,12 @@ class App extends Component {
       login: "",
     };
   }
-  
+
   userHasAuthenticated = authenticated => {
     this.setState({ isAuthenticated: authenticated });
   }
 
-  render(){
+  render() {
     const childProps = {
       isAuthenticated: this.state.isAuthenticated,
       userHasAuthenticated: this.userHasAuthenticated,
@@ -37,10 +37,10 @@ class App extends Component {
     return (
       <div className="App">
         <div className="content">
-           <Menu props={childProps}/>
-           <Routes childProps={childProps}/>
+          <Menu props={childProps} />
+          <Routes childProps={childProps} />
         </div>
-    </div>
+      </div>
     );
   }
 

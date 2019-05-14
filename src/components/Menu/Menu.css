@@ -1,64 +1,62 @@
 :root {
-    --text-color: white; 
-  }
-
-
-.navbar{
-    color: var(--text-color)!important;
+  --text-color: white;
 }
 
+.navbar {
+  color: var(--text-color) !important;
+}
 
 .brand {
-    color: var(--text-color)!important;
-    font-size: 200%!important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  color: var(--text-color) !important;
+  font-size: 200% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.login{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-link {
-    color: var(--text-color)!important;
-    font-size: 200%!important;
-    /* padding-right: 10%!important; */
-    display: inline-block;
-    justify-content: center;
-    align-items: center;
+  color: var(--text-color) !important;
+  font-size: 200% !important;
+  /* padding-right: 10%!important; */
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
 }
 
 .register-link {
-    color: var(--text-color)!important;
-    font-size: 200%!important;
-    padding-left: 5%!important;
-    display: inline-block;
-    justify-content: center;
-    align-items: center;
+  color: var(--text-color) !important;
+  font-size: 200% !important;
+  padding-left: 5% !important;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
 }
 
-.login-img{
-    padding-left: 5%!important;
-    margin-top: 5px!important;
-    text-align: center!important;
-    align-items: center!important;
-    display: inline-block!important;
-    width: 20%;
+.login-img {
+  padding-left: 5% !important;
+  margin-top: 5px !important;
+  text-align: center !important;
+  align-items: center !important;
+  display: inline-block !important;
+  width: 20%;
 }
 
-.logo{
-    margin-top: -15px!important;
-    text-align: center!important;
-    align-items: center!important;
-    display: inline-block!important;
-    width: 15%;
+.logo {
+  margin-top: -15px !important;
+  text-align: center !important;
+  align-items: center !important;
+  display: inline-block !important;
+  width: 15%;
 }
 
-.logo-label{
-    display: inline-block;
-    justify-content: center;
-    align-items: center;
+.logo-label {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
 }
