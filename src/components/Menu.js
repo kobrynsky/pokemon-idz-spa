@@ -40,7 +40,7 @@ export default class Menu extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem className="login">
-                <NavLink className="login-link" href="/login/">Login</NavLink>
+                <NavLink className="login-link" href="/login/">login</NavLink>
                 <Media className="login-img" src={LoginImg}  alt="login_image" />
               </NavItem>
             </Nav>
