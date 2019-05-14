@@ -42,6 +42,7 @@ export default class Menu extends React.Component {
               <NavItem className="login">
                 <NavLink className="login-link" href="/login/">login</NavLink>
                 <Media className="login-img" src={LoginImg}  alt="login_image" />
+                <NavLink className="register-link" href="/register/">register</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
