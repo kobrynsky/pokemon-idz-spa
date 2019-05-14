@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Menu.css";
-import Logo from '../assets/pokemon_logo.png';
-import LoginImg from '../assets/pokeball.png';
+import Logo from '../../assets/pokemon_logo.png';
+import LoginImg from '../../assets/pokeball.png';
 import {
   Collapse,
   Navbar,

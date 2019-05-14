@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import Menu from "./components/Menu";
-import HomePage from "./components/HomePage";
+import Menu from "./components/Menu/Menu";
+import HomePage from "./components/HomePage/HomePage";
 import LoginFormContainer from "./containers/LoginFormContainer";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';

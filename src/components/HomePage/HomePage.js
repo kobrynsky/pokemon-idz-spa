@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./HomePage.css";
-import '../App.css'
+import '../../App.css'
 
 class HomePage extends Component {
     render() {
