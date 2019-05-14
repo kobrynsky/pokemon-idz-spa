@@ -14,10 +14,10 @@ import {
   Label
  } from 'reactstrap';
 
+
 export default class Menu extends React.Component {
   constructor(props) {
     super(props);
-
     this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false
@@ -28,6 +28,7 @@ export default class Menu extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
+
   render() {
     return (
       <React.Fragment>
@@ -40,7 +41,7 @@ export default class Menu extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem className="login">
-                <NavLink className="login-link" href="/login/">login</NavLink>
+                <NavLink className="login-link" href="/login" onClick={this.openLoginModal}>login</NavLink>
                 <Media className="login-img" src={LoginImg}  alt="login_image" />
                 <NavLink className="register-link" href="/register/">register</NavLink>
               </NavItem>
