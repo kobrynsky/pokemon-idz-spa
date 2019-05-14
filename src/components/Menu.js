@@ -1,5 +1,7 @@
 import React from 'react';
 import "./Menu.css";
+import Logo from '../assets/pokemon_logo.png';
+import LoginImg from '../assets/pokeball.png';
 import {
   Collapse,
   Navbar,
@@ -8,6 +10,8 @@ import {
   Nav,
   NavItem,
   NavLink,
+  Media,
+  Label
  } from 'reactstrap';
 
 export default class Menu extends React.Component {
@@ -28,16 +32,17 @@ export default class Menu extends React.Component {
     return (
       <div>
         <Navbar className="navbar" color="dark" light expand="md">
-          <NavbarBrand className="brand" href="/">pokemon idz</NavbarBrand>
+          <NavbarBrand className="brand" href="/">
+            <Media className="logo" src={Logo} alt="pokemon_logo" />
+            <Label className="logo-label">pokemon idź</Label>
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink className="login" href="/login/">Login</NavLink>
+              <NavItem className="login">
+                <NavLink className="login-link" href="/login/">Login</NavLink>
+                <Media className="login-img" src={LoginImg}  alt="login_image" />
               </NavItem>
-              {/* <NavItem>
-                <NavLink className="login" href="https://github.com/reactstrap/reactstrap"></NavLink>
-              </NavItem> */}
             </Nav>
           </Collapse>
         </Navbar>

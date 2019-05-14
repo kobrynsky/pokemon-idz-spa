@@ -10,11 +10,45 @@
 
 .brand {
     color: var(--text-color)!important;
-    font-size: 200%!important;;
+    font-size: 200%!important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.login {
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-link {
     color: var(--text-color)!important;
-    font-size: 150%!important;
-    padding-right: 30%!important;
+    font-size: 200%!important;
+    padding-right: 10%!important;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-img{
+    padding-top: 5px!important;
+    text-align: center!important;
+    align-items: center!important;
+    display: inline-block!important;
+    width: 20%;
+}
+
+.logo{
+    margin-top: -15px!important;
+    text-align: center!important;
+    align-items: center!important;
+    display: inline-block!important;
+    width: 15%;
+}
+
+.logo-label{
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
 }
