@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import "./Login.css";
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import '../../App.css'
+import { BASE_URL } from '../../constants'
+import axios from 'axios'; 
+
 
 export default class Login extends Component {
     constructor(props) {
@@ -25,7 +28,23 @@ export default class Login extends Component {
   
     handleSubmit = event => {
       event.preventDefault();
+
+      var data = {
+          email: this.email,
+          password: this.password
+      }
+      axios.post(BASE_URL, data)
+      .then(function (response) {
+          console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      this.props.userHasAuthenticated(true);
     }
+
+
+
   
     render() {
       return (
