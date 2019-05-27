@@ -6,7 +6,6 @@ import {
 } from 'reactstrap';
 import { BASE_URL } from "../../constants";
 import axios from 'axios';
-import CrossfadeImage from "react-crossfade-image"
 
 export default class RandomPokemon extends React.Component {
     constructor(props) {
@@ -14,7 +13,8 @@ export default class RandomPokemon extends React.Component {
         this.state = {
             pokemonSpriteUrl: Bush,
             name: "",
-            clicked: false
+            clicked: false,
+            stats: [],
         }
         this.drawPokemon = this.drawPokemon.bind(this);
     }
@@ -32,16 +32,15 @@ export default class RandomPokemon extends React.Component {
                     console.log(response.data);
                     console.log(response.data.id);
                     console.log(response.data.sprites.front_default);
+                    // let savePokemonDto = {
 
-                    let savePokemonDto = {
+                    // }
 
-                    }
-
-                    axios.post(BASE_URL + 'game/savePokemon/', savePokemonDto)
-
+                    // axios.post(BASE_URL + 'game/savePokemon/', savePokemonDto)
 
 
-                    self.setState({pokemonSpriteUrl: response.data.sprites.front_default, name: response.data.name, clicked: true})
+
+                    self.setState({pokemonSpriteUrl: response.data.sprites.front_default, name: response.data.name, clicked: true, stats: response.data.stats})
                     document.getElementById(bushId).src = response.data.sprites.front_default;
                     
                 })
@@ -61,10 +60,19 @@ export default class RandomPokemon extends React.Component {
     render() {
         const clicked = this.state.clicked;
         const name = this.state.name;
+        const stats = this.state.stats;
         let text;
 
         if (clicked) {
-            text = <div className="main-text">Uuuuu! <br></br>Wylosowałeś: {name} </div>;
+            var textStyle = {
+                fontSize: '20px',
+              };
+
+
+            text = <div className="main-text" style={textStyle}>Uuuuu! <br></br>Wylosowałeś: {name} <br></br> Dane: <br></br>
+            {stats.map(stat => <li>{stat.stat.name}: {stat.base_stat} </li>)}
+
+                </div>
         }
         else {
             text = <div className="main-text">W każdym z trzech krzaczków znajduje się pokemon! <br></br>Wybierz jeden z nich!</div>;

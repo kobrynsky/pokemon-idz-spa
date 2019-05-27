@@ -34,9 +34,10 @@
     right: 20%;
     bottom: 40%;
     background: rgba(33, 37, 41, 0.9);
-    border-radius: 8%;
+    border-radius: 20px;
     padding: 5%;
-
+    align-items: center;
+    justify-content: center;
     font-size: calc(20px + 2vmin);
     text-align: center;
     color: white;
