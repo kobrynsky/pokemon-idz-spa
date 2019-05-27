@@ -18,8 +18,9 @@ class HomePage extends Component {
                   <>
                         Witaj graczu!          
                         Co dalej?
-                        <br></br>
                         <a href="/players">Lista graczy</a>
+                        <a href="/random-pokemon">Losuj pokemona</a>
+                        <a href="/players">Walcz z dzikim pokemonem</a>
                   </>
 
                 }

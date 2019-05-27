@@ -1,0 +1,46 @@
+.bushes{
+    margin-top: 15%;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(40px + 2vmin);
+    text-align: center;
+    color: white;
+    color: -webkit-linear-gradient(#eee, #333);
+    display: flex;
+    flex-direction: row;
+    position:absolute;
+    bottom:2%;
+    width: 90%;
+}
+
+.bush1, .bush2, .bush3{
+    margin-left: 10%;
+    width: 130%;
+}
+
+.bushes :hover{
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.main-text-wrapper {
+
+  }
+  
+  .main-text {
+    position: absolute;
+    top: 22%;
+    left: 20%;
+    background: rgba(33, 37, 41, 0.9);
+    border-radius: 8%;
+    padding: 5%;
+
+    font-size: calc(20px + 2vmin);
+    text-align: center;
+    color: white;
+    color: -webkit-linear-gradient(#eee, #333);
+    display: flex;
+    flex-direction: column;
+  }
