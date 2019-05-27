@@ -2,16 +2,17 @@ import React from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import LoginPage from "./components/Login/LoginPage";
 import NotFound from "./components/Others/NotFound";
-import AppliedRoute from "./components/Others/AppliedRoute";
 import HomePage from "./components/HomePage/HomePage";
 import RegisterPage from "./components/Register/RegisterPage";
+import PlayersTable from "./components/Player/PlayersTable";
 
-export default ({ childProps }) =>
+export default () =>
     <BrowserRouter>
         <Switch>
-            <AppliedRoute path="/" exact component={HomePage} props={childProps} />
-            <AppliedRoute path="/login" exact component={LoginPage} props={childProps} />
-            <AppliedRoute path="/register" exact component={RegisterPage} props={childProps} />
+            <Route path="/" exact component={HomePage}/>
+            <Route path="/login" exact component={LoginPage}/>
+            <Route path="/register" exact component={RegisterPage}/>
+            <Route path="/players" exact component={PlayersTable}/>
             <Route component={NotFound} />
         </Switch>
     </BrowserRouter>;

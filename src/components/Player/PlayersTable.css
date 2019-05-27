@@ -1,0 +1,13 @@
+.players-table{
+    width:70%; 
+    margin-left:15%; 
+    margin-right:15%;
+    margin-top: 7%;
+    color: white;
+    background: rgba(33, 37, 41, 0.7);
+}
+
+.players-table td:hover {
+    color: black;
+    cursor: pointer;
+}

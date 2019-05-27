@@ -18,6 +18,8 @@ class HomePage extends Component {
                   <>
                         Witaj graczu!          
                         Co dalej?
+                        <br></br>
+                        <a href="/players">Lista graczy</a>
                   </>
 
                 }
