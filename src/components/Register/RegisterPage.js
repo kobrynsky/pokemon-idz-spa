@@ -15,12 +15,13 @@ export default class RegisterPage extends Component {
             login: "",
             firstName: "",
             lastName: "",
-            password: ""
+            password: "",
+            matchingPassword: "",
         };
     }
 
     validateForm() {
-        return this.state.email.length > 0 && this.state.password.length > 0 && this.state.login.length > 0 && this.state.firstName.length > 0 && this.state.lastName.length > 0;
+        return this.state.email.length > 0 && this.state.password.length > 0 && this.state.matchingPassword.length > 0  && this.state.login.length > 0 && this.state.firstName.length > 0 && this.state.lastName.length > 0 && this.state.password === this.state.matchingPassword;
     }
 
     handleChange = event => {
@@ -32,13 +33,29 @@ export default class RegisterPage extends Component {
     handleSubmit = event => {
         event.preventDefault();
 
-        var data = {
-            email: this.email,
-            login: this.login,
-            firstName: this.firstName,
-            lastName: this.lastName,
-            password: this.password
+        var accountDto = {
+            email: this.state.email,
+            login: this.state.login,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            password: this.state.password,
+            matchingPassword: this.state.matchingPassword
         }
+        console.log(accountDto);
+        var self = this;
+        axios.post(BASE_URL +'user/register', accountDto)
+            .then(function (response) {
+                console.log(response);
+                localStorage.setItem('id', response.data.id);
+                localStorage.setItem('login', response.data.login);
+                self.props.history.push('/')
+                window.location.reload();
+            })
+            .catch(function (error) {
+                console.log(error);
+                alert("Błąd podczas rejestracji!");
+                self.setState({login: "", password: ""})
+            });
     }
 
     render() {
@@ -82,6 +99,14 @@ export default class RegisterPage extends Component {
                         <FormLabel>Hasło</FormLabel>
                         <FormControl
                             value={this.state.password}
+                            onChange={this.handleChange}
+                            type="password"
+                        />
+                    </FormGroup>
+                    <FormGroup controlId="matchingPassword">
+                        <FormLabel>Potwórz hasło</FormLabel>
+                        <FormControl
+                            value={this.state.matchingPassword}
                             onChange={this.handleChange}
                             type="password"
                         />

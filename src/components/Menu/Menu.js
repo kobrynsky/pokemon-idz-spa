@@ -29,6 +29,10 @@ export default class Menu extends React.Component {
     });
   }
 
+  handleLogout() {
+    localStorage.clear();
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -41,9 +45,21 @@ export default class Menu extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem className="login">
-                <NavLink className="login-link" href="/login" onClick={this.openLoginModal}>login</NavLink>
-                <Media className="login-img" src={LoginImg} alt="login_image" />
-                <NavLink className="register-link" href="/register">register</NavLink>
+                {localStorage.getItem('id') == null ?
+                  <>
+                    <NavLink className="login-link" href="/login" onClick={this.openLoginModal}>logowanie</NavLink>
+                    <Media className="login-img" src={LoginImg} alt="login_image" />
+                    <NavLink className="register-link" href="/register">rejestracja</NavLink>
+                  </>
+                  :
+                  <>
+                  <NavLink className="login-name" href="/profile">{localStorage.getItem('login')}</NavLink>
+                  <Media className="login-img" src={LoginImg} alt="login_image" />
+                  <NavLink className="log-out-link" href="/" onClick={this.handleLogout}>wyloguj</NavLink>
+                  </>
+
+                }
+
               </NavItem>
             </Nav>
           </Collapse>

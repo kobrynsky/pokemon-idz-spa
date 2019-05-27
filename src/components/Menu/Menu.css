@@ -20,7 +20,7 @@
   align-items: center;
 }
 
-.login-link {
+.login-link, .login-name {
   color: var(--text-color) !important;
   font-size: 200% !important;
   /* padding-right: 10%!important; */
@@ -29,7 +29,7 @@
   align-items: center;
 }
 
-.register-link {
+.register-link, .log-out-link {
   color: var(--text-color) !important;
   font-size: 200% !important;
   padding-left: 5% !important;

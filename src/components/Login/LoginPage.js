@@ -4,6 +4,7 @@ import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import '../../App.css'
 import { BASE_URL } from '../../constants'
 import axios from 'axios';
+import { Link, Redirect } from 'react-router-dom';
 
 
 export default class LoginPage extends Component {
@@ -11,13 +12,13 @@ export default class LoginPage extends Component {
         super(props);
 
         this.state = {
-            email: "",
+            login: "",
             password: ""
         };
     }
 
     validateForm() {
-        return this.state.email.length > 0 && this.state.password.length > 0;
+        return this.state.login.length > 0 && this.state.password.length > 0;
     }
 
     handleChange = event => {
@@ -29,38 +30,45 @@ export default class LoginPage extends Component {
     handleSubmit = event => {
         event.preventDefault();
 
-        var data = {
-            email: this.email,
-            password: this.password
+        var accountDto = {
+            login: this.state.login,
+            password: this.state.password
         }
-        axios.post(BASE_URL, data)
+        console.log(accountDto);
+        var self = this;
+        axios.post(BASE_URL +'user/login', accountDto)
             .then(function (response) {
                 console.log(response);
+                localStorage.setItem('id', response.data.id);
+                localStorage.setItem('login', response.data.login);
+                window.location.reload();
             })
             .catch(function (error) {
                 console.log(error);
+                alert("Błąd podczas logowania! Hasło lub login nieprawidłowe!");
+                self.setState({login: "", password: ""})
             });
-        this.props.userHasAuthenticated(true);
     }
 
-
-
-
     render() {
-        return (
+        return (     
+            
+            localStorage.getItem('id') != null ?
+           <Redirect to="/"/>
+                :
             <div className="LoginPage">
                 <form onSubmit={this.handleSubmit}>
-                    <FormGroup controlId="email">
-                        <FormLabel>Email</FormLabel>
+                    <FormGroup controlId="login">
+                        <FormLabel>Login</FormLabel>
                         <FormControl
                             autoFocus
-                            type="email"
-                            value={this.state.email}
+                            type="login"
+                            value={this.state.login}
                             onChange={this.handleChange}
                         />
                     </FormGroup>
                     <FormGroup controlId="password">
-                        <FormLabel>Password</FormLabel>
+                        <FormLabel>Hasło</FormLabel>
                         <FormControl
                             value={this.state.password}
                             onChange={this.handleChange}
