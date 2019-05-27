@@ -32,24 +32,32 @@ export default class RandomPokemon extends React.Component {
                     console.log(response.data);
                     console.log(response.data.id);
                     console.log(response.data.sprites.front_default);
-                    // let savePokemonDto = {
 
-                    // }
+                    let savePokemonDto = {
+                        pokemonId: response.data.id,
+                        userId: localStorage.getItem('id'),
+                    }
 
-                    // axios.post(BASE_URL + 'game/savePokemon/', savePokemonDto)
-
-
-
-                    self.setState({pokemonSpriteUrl: response.data.sprites.front_default, name: response.data.name, clicked: true, stats: response.data.stats})
+                    console.log(savePokemonDto);
+                    axios.post(BASE_URL + 'game/savePokemon', savePokemonDto)
+                        .then(function (response) {
+                            console.log(response);
+                            alert("Zapisano Pokemona w bazie!")
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                            alert("Błąd podczas zapisywania Pokemona do bazy!");
+                        });
+                    self.setState({ pokemonSpriteUrl: response.data.sprites.front_default, name: response.data.name, clicked: true, stats: response.data.stats })
                     document.getElementById(bushId).src = response.data.sprites.front_default;
-                    
+
                 })
                 .catch(function (error) {
                     console.log(error);
                     alert("Błąd pobierania danych!");
                 });
-                console.log(this.state.name);
-                this.forceUpdate();
+            console.log(this.state.name);
+            this.forceUpdate();
         }
         else {
             alert("Już losowałeś!")
@@ -66,13 +74,13 @@ export default class RandomPokemon extends React.Component {
         if (clicked) {
             var textStyle = {
                 fontSize: '20px',
-              };
+            };
 
 
             text = <div className="main-text" style={textStyle}>Uuuuu! <br></br>Wylosowałeś: {name} <br></br> Dane: <br></br>
-            {stats.map(stat => <li>{stat.stat.name}: {stat.base_stat} </li>)}
+                {stats.map(stat => <li>{stat.stat.name}: {stat.base_stat} </li>)}
 
-                </div>
+            </div>
         }
         else {
             text = <div className="main-text">W każdym z trzech krzaczków znajduje się pokemon! <br></br>Wybierz jeden z nich!</div>;
