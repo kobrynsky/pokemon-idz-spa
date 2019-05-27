@@ -22,10 +22,7 @@ class HomePage extends Component {
                         <a href="/random-pokemon">Losuj pokemona</a>
                         <a href="/players">Walcz z dzikim pokemonem</a>
                   </>
-
                 }
-
-
                     </div>
                 </div>
             </React.Fragment>
