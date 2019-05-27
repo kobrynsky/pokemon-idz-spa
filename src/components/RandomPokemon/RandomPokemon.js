@@ -1,10 +1,8 @@
 import React from "react";
 import Bush from '../../assets/bush.png';
 import "./RandomPokemon.css";
-import {
-    Media,
-} from 'reactstrap';
-import { BASE_URL } from "../../constants";
+import { Media } from 'reactstrap';
+import { BASE_URL, POKEMON_API_URL, MAX_POKEMON_ID } from "../../constants";
 import axios from 'axios';
 
 export default class RandomPokemon extends React.Component {
@@ -22,11 +20,10 @@ export default class RandomPokemon extends React.Component {
     drawPokemon = e => {
         console.log("no hejka");
         if (!this.state.clicked) {
-            let randId = Math.floor(Math.random() * 800) + 1;
-            let pokeURL2 = "http://pokeapi.co/api/v2/pokemon/" + randId;
+            let randId = this.drawPokemonId();
             let bushId = e.currentTarget.getAttribute("id");
             let self = this;
-            axios.get(pokeURL2)
+            axios.get(POKEMON_API_URL + randId)
                 .then(function (response) {
                     console.log(response.data.name);
                     console.log(response.data);
@@ -50,7 +47,6 @@ export default class RandomPokemon extends React.Component {
                         });
                     self.setState({ pokemonSpriteUrl: response.data.sprites.front_default, name: response.data.name, clicked: true, stats: response.data.stats })
                     document.getElementById(bushId).src = response.data.sprites.front_default;
-
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -64,6 +60,10 @@ export default class RandomPokemon extends React.Component {
         }
     }
 
+
+    drawPokemonId() {
+        return Math.floor(Math.random() * MAX_POKEMON_ID) + 1;
+    }
 
     render() {
         const clicked = this.state.clicked;

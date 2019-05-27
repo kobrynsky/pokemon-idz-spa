@@ -4,7 +4,7 @@ import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import '../../App.css'
 import { BASE_URL } from '../../constants'
 import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 
 export default class LoginPage extends Component {
@@ -36,7 +36,7 @@ export default class LoginPage extends Component {
         }
         console.log(accountDto);
         var self = this;
-        axios.post(BASE_URL +'user/login', accountDto)
+        axios.post(BASE_URL + 'user/login', accountDto)
             .then(function (response) {
                 console.log(response);
                 localStorage.setItem('id', response.data.id);
@@ -46,45 +46,45 @@ export default class LoginPage extends Component {
             .catch(function (error) {
                 console.log(error);
                 alert("Błąd podczas logowania! Hasło lub login nieprawidłowe!");
-                self.setState({login: "", password: ""})
+                self.setState({ login: "", password: "" })
             });
     }
 
     render() {
-        return (     
-            
+        return (
+
             localStorage.getItem('id') != null ?
-           <Redirect to="/"/>
+                <Redirect to="/" />
                 :
-            <div className="LoginPage">
-                <form onSubmit={this.handleSubmit}>
-                    <FormGroup controlId="login">
-                        <FormLabel>Login</FormLabel>
-                        <FormControl
-                            autoFocus
-                            type="login"
-                            value={this.state.login}
-                            onChange={this.handleChange}
-                        />
-                    </FormGroup>
-                    <FormGroup controlId="password">
-                        <FormLabel>Hasło</FormLabel>
-                        <FormControl
-                            value={this.state.password}
-                            onChange={this.handleChange}
-                            type="password"
-                        />
-                    </FormGroup>
-                    <Button
-                        block
-                        disabled={!this.validateForm()}
-                        type="submit"
-                        variant="light"
-                    >
-                        Login
+                <div className="LoginPage">
+                    <form onSubmit={this.handleSubmit}>
+                        <FormGroup controlId="login">
+                            <FormLabel>Login</FormLabel>
+                            <FormControl
+                                autoFocus
+                                type="login"
+                                value={this.state.login}
+                                onChange={this.handleChange}
+                            />
+                        </FormGroup>
+                        <FormGroup controlId="password">
+                            <FormLabel>Hasło</FormLabel>
+                            <FormControl
+                                value={this.state.password}
+                                onChange={this.handleChange}
+                                type="password"
+                            />
+                        </FormGroup>
+                        <Button
+                            block
+                            disabled={!this.validateForm()}
+                            type="submit"
+                            variant="light"
+                        >
+                            Login
             </Button>
-                </form>
-            </div>
+                    </form>
+                </div>
         );
     }
 }

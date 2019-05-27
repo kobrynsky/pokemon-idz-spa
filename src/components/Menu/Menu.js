@@ -53,9 +53,9 @@ export default class Menu extends React.Component {
                   </>
                   :
                   <>
-                  <NavLink className="login-name" href="/profile">{localStorage.getItem('login')}</NavLink>
-                  <Media className="login-img" src={LoginImg} alt="login_image" />
-                  <NavLink className="log-out-link" href="/" onClick={this.handleLogout}>wyloguj</NavLink>
+                    <NavLink className="login-name" href="/profile">{localStorage.getItem('login')}</NavLink>
+                    <Media className="login-img" src={LoginImg} alt="login_image" />
+                    <NavLink className="log-out-link" href="/" onClick={this.handleLogout}>wyloguj</NavLink>
                   </>
 
                 }

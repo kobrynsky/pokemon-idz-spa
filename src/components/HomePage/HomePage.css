@@ -5,16 +5,12 @@ body {
 .pokemon-home {
   min-height: 80%;
   min-width: 1024px;
-
-  /* Set up proportionate scaling */
   width: 800%;
   height: auto;
 
-  /* Set up positioning */
   position: fixed;
   top: 0;
   left: 0;
-
   padding-top: 10vmin;
 }
 

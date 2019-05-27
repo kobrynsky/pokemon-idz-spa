@@ -21,7 +21,7 @@ export default class RegisterPage extends Component {
     }
 
     validateForm() {
-        return this.state.email.length > 0 && this.state.password.length > 0 && this.state.matchingPassword.length > 0  && this.state.login.length > 0 && this.state.firstName.length > 0 && this.state.lastName.length > 0 && this.state.password === this.state.matchingPassword;
+        return this.state.email.length > 0 && this.state.password.length > 0 && this.state.matchingPassword.length > 0 && this.state.login.length > 0 && this.state.firstName.length > 0 && this.state.lastName.length > 0 && this.state.password === this.state.matchingPassword;
     }
 
     handleChange = event => {
@@ -43,7 +43,7 @@ export default class RegisterPage extends Component {
         }
         console.log(accountDto);
         var self = this;
-        axios.post(BASE_URL +'user/register', accountDto)
+        axios.post(BASE_URL + 'user/register', accountDto)
             .then(function (response) {
                 console.log(response);
                 localStorage.setItem('id', response.data.id);
@@ -54,7 +54,7 @@ export default class RegisterPage extends Component {
             .catch(function (error) {
                 console.log(error);
                 alert("Błąd podczas rejestracji!");
-                self.setState({login: "", password: ""})
+                self.setState({ login: "", password: "" })
             });
     }
 

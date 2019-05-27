@@ -23,7 +23,6 @@
 .login-link, .login-name {
   color: var(--text-color) !important;
   font-size: 200% !important;
-  /* padding-right: 10%!important; */
   display: inline-block;
   justify-content: center;
   align-items: center;

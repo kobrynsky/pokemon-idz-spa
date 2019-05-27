@@ -19,7 +19,7 @@ export default class Profile extends React.Component {
                 email: "",
                 wins: 0,
                 loses: 0
-           }]
+            }]
         }
 
     }
