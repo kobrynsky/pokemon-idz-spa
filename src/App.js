@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Menu from "./components/Menu/Menu";
 import HomePage from "./components/HomePage/HomePage";
-import Login from "./components/Login/Login";
 import AppliedRoute from "./components/Others/AppliedRoute";
 import NotFound from "./components/Others/NotFound";
 import { Route, Switch, BrowserRouter } from "react-router-dom";

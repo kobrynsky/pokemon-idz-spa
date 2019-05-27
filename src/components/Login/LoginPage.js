@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import "./Login.css";
+import "./LoginPage.css";
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import '../../App.css'
 import { BASE_URL } from '../../constants'
 import axios from 'axios';
 
 
-export default class Login extends Component {
+export default class LoginPage extends Component {
     constructor(props) {
         super(props);
 
@@ -48,7 +48,7 @@ export default class Login extends Component {
 
     render() {
         return (
-            <div className="Login">
+            <div className="LoginPage">
                 <form onSubmit={this.handleSubmit}>
                     <FormGroup controlId="email">
                         <FormLabel>Email</FormLabel>
