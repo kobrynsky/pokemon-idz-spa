@@ -5,8 +5,10 @@ If you want to run this project:
 - npm install (in repository directory)
 - npm start
 
-## This project was written with ❤️.
+------------
+
+#### This project was written with ❤️.
 
 
-## XD Driven Development
+##### XD Driven Development
 
