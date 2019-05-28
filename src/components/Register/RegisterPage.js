@@ -63,52 +63,52 @@ export default class RegisterPage extends Component {
             <div className="RegisterPage">
                 <form onSubmit={this.handleSubmit}>
                     <FormGroup controlId="email">
-                        <FormLabel>Email</FormLabel>
                         <FormControl
                             autoFocus
                             type="email"
                             value={this.state.email}
                             onChange={this.handleChange}
+                            placeholder="email"
                         />
                     </FormGroup>
                     <FormGroup controlId="login">
-                        <FormLabel>Login</FormLabel>
                         <FormControl
                             value={this.state.login}
                             onChange={this.handleChange}
                             type="login"
+                            placeholder="login"
                         />
                     </FormGroup>
                     <FormGroup controlId="firstName">
-                        <FormLabel>Imię</FormLabel>
                         <FormControl
                             value={this.state.firstName}
                             onChange={this.handleChange}
                             type="firstName"
+                            placeholder="imię"
                         />
                     </FormGroup>
                     <FormGroup controlId="lastName">
-                        <FormLabel>Nazwisko</FormLabel>
                         <FormControl
                             value={this.state.lastName}
                             onChange={this.handleChange}
                             type="lastName"
+                            placeholder="nazwisko"
                         />
                     </FormGroup>
                     <FormGroup controlId="password">
-                        <FormLabel>Hasło</FormLabel>
                         <FormControl
                             value={this.state.password}
                             onChange={this.handleChange}
                             type="password"
+                            placeholder="hasło"
                         />
                     </FormGroup>
                     <FormGroup controlId="matchingPassword">
-                        <FormLabel>Potwórz hasło</FormLabel>
                         <FormControl
                             value={this.state.matchingPassword}
                             onChange={this.handleChange}
                             type="password"
+                            placeholder="powtórz hasło"
                         />
                     </FormGroup>
                     <Button

@@ -59,20 +59,20 @@ export default class LoginPage extends Component {
                 <div className="LoginPage">
                     <form onSubmit={this.handleSubmit}>
                         <FormGroup controlId="login">
-                            <FormLabel>Login</FormLabel>
                             <FormControl
                                 autoFocus
                                 type="login"
                                 value={this.state.login}
                                 onChange={this.handleChange}
+                                placeholder="login"
                             />
                         </FormGroup>
                         <FormGroup controlId="password">
-                            <FormLabel>Hasło</FormLabel>
                             <FormControl
                                 value={this.state.password}
                                 onChange={this.handleChange}
                                 type="password"
+                                placeholder="hasło"
                             />
                         </FormGroup>
                         <Button
