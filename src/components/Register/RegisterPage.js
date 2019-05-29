@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./RegisterPage.css";
-import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import { Button, FormGroup, FormControl } from "react-bootstrap";
 import '../../App.css'
 import { BASE_URL } from '../../constants'
 import axios from 'axios';

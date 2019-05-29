@@ -7,6 +7,7 @@ import RegisterPage from "./components/Register/RegisterPage";
 import PlayersTable from "./components/PlayersTable/PlayersTable";
 import RandomPokemon from "./components/RandomPokemon/RandomPokemon";
 import Profile from "./components/Profile/Profile";
+import PlayerTeam from "./components/PlayerTeam/PlayerTeam";
 
 export default () =>
     <BrowserRouter>
@@ -17,6 +18,7 @@ export default () =>
             <Route path="/players" exact component={PlayersTable} />
             <Route path="/random-pokemon" exact component={RandomPokemon} />
             <Route path="/user-profile" exact component={Profile} />
+            <Route path="/user-team" exact component={PlayerTeam} />
             <Route component={NotFound} />
         </Switch>
     </BrowserRouter>;

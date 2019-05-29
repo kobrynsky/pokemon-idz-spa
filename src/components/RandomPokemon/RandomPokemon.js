@@ -1,8 +1,9 @@
 import React from "react";
 import Bush from '../../assets/bush.png';
+import { drawPokemon } from '../../services/pokemonService';
 import "./RandomPokemon.css";
 import { Media } from 'reactstrap';
-import { BASE_URL, POKEMON_API_URL, MAX_POKEMON_ID } from "../../constants";
+import { BASE_URL, MAX_POKEMON_ID } from "../../constants";
 import axios from 'axios';
 
 export default class RandomPokemon extends React.Component {
@@ -10,50 +11,25 @@ export default class RandomPokemon extends React.Component {
         super(props);
         this.state = {
             pokemonSpriteUrl: Bush,
-            name: "",
             clicked: false,
-            stats: [],
+            pokemon: [],
         }
         this.drawPokemon = this.drawPokemon.bind(this);
     }
 
-    drawPokemon = e => {
-        console.log("no hejka");
+    drawPokemon = async e => {
         if (!this.state.clicked) {
-            let randId = this.drawPokemonId();
             let bushId = e.currentTarget.getAttribute("id");
-            let self = this;
-            axios.get(POKEMON_API_URL + randId)
-                .then(function (response) {
-                    console.log(response.data.name);
-                    console.log(response.data);
-                    console.log(response.data.id);
-                    console.log(response.data.sprites.front_default);
+            let pokemon = await drawPokemon();
 
-                    let savePokemonDto = {
-                        pokemonId: response.data.id,
-                        userId: localStorage.getItem('id'),
-                    }
-
-                    console.log(savePokemonDto);
-                    axios.post(BASE_URL + 'game/savePokemon', savePokemonDto)
-                        .then(function (response) {
-                            console.log(response);
-                            alert("Zapisano Pokemona w bazie!")
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                            alert("Błąd podczas zapisywania Pokemona do bazy!");
-                        });
-                    self.setState({ pokemonSpriteUrl: response.data.sprites.front_default, name: response.data.name, clicked: true, stats: response.data.stats })
-                    document.getElementById(bushId).src = response.data.sprites.front_default;
-                })
-                .catch(function (error) {
-                    console.log(error);
-                    alert("Błąd pobierania danych!");
-                });
-            console.log(this.state.name);
+            let savePokemonDto = {
+                pokemonId: pokemon.id,
+                userId: localStorage.getItem('id'),
+            }
+            this.savePokemon(savePokemonDto)
+            this.setState({ pokemon: pokemon });
             this.forceUpdate();
+            this.changeBushImageSrc(bushId,  pokemon.sprites.front_default);
         }
         else {
             alert("Już losowałeś!")
@@ -61,14 +37,25 @@ export default class RandomPokemon extends React.Component {
     }
 
 
-    drawPokemonId() {
-        return Math.floor(Math.random() * MAX_POKEMON_ID) + 1;
+    savePokemon(savePokemonDto) {
+        axios.post(BASE_URL + 'game/savePokemon', savePokemonDto)
+            .then(function (response) {
+                console.log(response);
+                alert("Zapisano Pokemona w bazie!")
+            })
+            .catch(function (error) {
+                console.log(error);
+                alert("Błąd podczas zapisywania Pokemona do bazy!");
+            });
+    }
+
+    changeBushImageSrc(bushId, src){
+        document.getElementById(bushId).src = src;
     }
 
     render() {
         const clicked = this.state.clicked;
-        const name = this.state.name;
-        const stats = this.state.stats;
+        const pokemon = this.state.pokemon;
         let text;
 
         if (clicked) {
@@ -77,8 +64,8 @@ export default class RandomPokemon extends React.Component {
             };
 
 
-            text = <div className="main-text" style={textStyle}>Uuuuu! <br></br>Wylosowałeś: {name} <br></br> Dane: <br></br>
-                {stats.map(stat => <li>{stat.stat.name}: {stat.base_stat} </li>)}
+            text = <div className="main-text" style={textStyle}>Uuuuu! <br></br>Wylosowałeś: {pokemon.name} <br></br> Dane: <br></br>
+                {pokemon.skills.map(skill => <li>{skill.name}: {skill.stat} </li>)}
 
             </div>
         }
