@@ -17,7 +17,7 @@ body {
 .welcome-text {
   align-items: center;
   justify-content: center;
-  font-size: calc(40px + 2vmin);
+  font-size: calc(20px + 2vmin);
   text-align: center;
   color: white;
   color: -webkit-linear-gradient(#eee, #333);
@@ -26,12 +26,16 @@ body {
 }
 
 .welcome-text-wrapper {
-  position: absolute;
-  top: 25%;
-  left: 25%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   background: rgba(33, 37, 41, 0.9);
-  border-radius: 5%;
-  padding: 5%;
+  border-radius: 10px;
+  padding: 3%;
 }
 
 .home-page {
