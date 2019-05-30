@@ -23,6 +23,36 @@ export default class PlayerTeam extends React.Component {
 
     }
 
+    async deletePokemon(pokemon)
+    {
+        let self = this;
+        let pokemons = this.state.pokemons;
+        let deletePokemonDto = {
+            pokemonId: pokemon.id,
+            userId: localStorage.getItem('id'),
+        }
+
+        await axios.delete(BASE_URL + 'game/deletePokemon', {data: deletePokemonDto})
+            .then(function (response) {
+                // alert("Usunięto Pokemona z bazy!")
+
+                for( var i = 0; i < pokemons.length; i++){ 
+                    if ( pokemons[i].id === pokemon.id) {
+                        pokemons.splice(i, 1); 
+                    }
+                 }
+                 self.setState({ pokemons: pokemons });
+                 self.forceUpdate();
+
+
+            })
+            .catch(function (error) {
+                console.log(error);
+                alert("Błąd podczas usuwania Pokemona do bazy!");
+            });
+            console.log(this.state.pokemons)
+    }
+
     render() {
         const pokemons = this.state.pokemons;
         return (
@@ -32,13 +62,15 @@ export default class PlayerTeam extends React.Component {
                         <tr>
                             <th>Pokemon</th>
                             <th>Wygląd</th>
+                            <th>Usuń</th>
                         </tr>
                     </thead>
                     <tbody>
                         {pokemons.map(pokemon =>
-                            <tr key={pokemon.id} onClick={()=> showPokemonInfo(pokemon)}>
-                                <td>{pokemon.name}</td>
-                                <td><img src={pokemon.sprites.front_default} alt="pokemon"></img></td>
+                            <tr key={pokemon.id}>
+                                <td onClick={()=> showPokemonInfo(pokemon)}>{pokemon.name}</td>
+                                <td onClick={()=> showPokemonInfo(pokemon)}><img src={pokemon.sprites.front_default} alt="pokemon"></img></td>
+                                <td onClick={()=> this.deletePokemon(pokemon)}>X</td>                            
                             </tr>
 
                         )}

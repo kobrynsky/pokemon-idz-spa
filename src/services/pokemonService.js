@@ -68,4 +68,5 @@ function showPokemonInfo(pokemon){
     alert(info);
 }
 
+
 export { getPokemon, drawPokemon, getPokemons, showPokemonInfo }
