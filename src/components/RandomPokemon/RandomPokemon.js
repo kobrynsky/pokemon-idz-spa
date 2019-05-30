@@ -3,8 +3,9 @@ import Bush from '../../assets/bush.png';
 import { drawPokemon } from '../../services/pokemonService';
 import "./RandomPokemon.css";
 import { Media } from 'reactstrap';
-import { BASE_URL, MAX_POKEMON_ID } from "../../constants";
+import { BASE_URL } from "../../constants";
 import axios from 'axios';
+import { showPokemonInfo } from '../../services/pokemonService';
 
 export default class RandomPokemon extends React.Component {
     constructor(props) {
@@ -27,7 +28,7 @@ export default class RandomPokemon extends React.Component {
                 userId: localStorage.getItem('id'),
             }
             this.savePokemon(savePokemonDto)
-            this.setState({ pokemon: pokemon });
+            this.setState({ pokemon: pokemon, clicked: true });
             this.forceUpdate();
             this.changeBushImageSrc(bushId,  pokemon.sprites.front_default);
         }
@@ -59,13 +60,7 @@ export default class RandomPokemon extends React.Component {
         let text;
 
         if (clicked) {
-            var textStyle = {
-                fontSize: '20px',
-            };
-
-
-            text = <div className="main-text" style={textStyle}>Uuuuu! <br></br>Wylosowałeś: {pokemon.name} <br></br> Dane: <br></br>
-                {pokemon.skills.map(skill => <li>{skill.name}: {skill.stat} </li>)}
+            text = <div className="main-text"  onClick={()=> showPokemonInfo(pokemon)}>Uuuuu! <br></br>Wylosowałeś: {pokemon.name}
 
             </div>
         }

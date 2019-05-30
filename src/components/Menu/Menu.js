@@ -2,6 +2,8 @@ import React from 'react';
 import "./Menu.css";
 import Logo from '../../assets/pokemon_logo.png';
 import LoginImg from '../../assets/pokeball.png';
+import HomePage from "../HomePage/HomePage";
+import { Link } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -16,55 +18,67 @@ import {
 
 
 export default class Menu extends React.Component {
-  constructor(props) {
-    super(props);
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      isOpen: false
-    };
-  }
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
+  constructor() {
+    super();
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   handleLogout() {
     localStorage.clear();
+    this.forceUpdate();
   }
+
+  localStorageUpdated(){
+    console.log("XD");
+
+}
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <Navbar className="navbar" color="dark" expand="md">
-          <NavbarBrand className="brand" href="/">
-            <Media className="logo" src={Logo} alt="pokemon_logo" />
-            <Label className="logo-label">pokemon idź</Label>
-          </NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
+          <Link exec to='/'>
+            <NavbarBrand className="brand">
+              <Media className="logo" src={Logo} alt="pokemon_logo" />
+              <Label className="logo-label">pokemon idź</Label>
+            </NavbarBrand>
+          </Link>
+
+          <NavbarToggler />
+          <Collapse navbar>
             <Nav className="ml-auto" navbar>
               <NavItem className="login">
                 {localStorage.getItem('id') == null ?
                   <>
-                    <NavLink className="login-link" href="/login" onClick={this.openLoginModal}>logowanie</NavLink>
+                    <Link exec to='/login'>
+                      <NavLink className="login-link">logowanie</NavLink>
+
+                    </Link>
                     <Media className="login-img" src={LoginImg} alt="login_image" />
-                    <NavLink className="register-link" href="/register">rejestracja</NavLink>
+                    <Link exec to='/register'>
+                      <NavLink className="register-link">rejestracja</NavLink>
+
+                    </Link>
                   </>
                   :
                   <>
-                    <NavLink className="login-name" href="/profile">{localStorage.getItem('login')}</NavLink>
+                    <Link exec to='/profile'>
+                      <NavLink className="login-name">{localStorage.getItem('login')}</NavLink>
+
+                    </Link>
                     <Media className="login-img" src={LoginImg} alt="login_image" />
-                    <NavLink className="log-out-link" href="/" onClick={this.handleLogout}>wyloguj</NavLink>
+
+                    <Link exec to='/'>
+                    <NavLink className="log-out-link" onClick={this.handleLogout}>wyloguj</NavLink>
+
+                    </Link>
                   </>
-
                 }
-
               </NavItem>
             </Nav>
           </Collapse>
         </Navbar>
-      </React.Fragment>
+      </>
     );
   }
 }

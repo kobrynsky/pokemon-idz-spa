@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./HomePage.css";
 import '../../App.css'
+import { Link } from "react-router-dom"
 
 class HomePage extends Component {
     render() {
@@ -18,9 +19,9 @@ class HomePage extends Component {
                             <>
                                 Witaj graczu!
                                 Co dalej?
-                        <a href="/players">Lista graczy</a>
-                                <a href="/random-pokemon">Losuj pokemona</a>
-                                <a href="/players">Walcz z dzikim pokemonem</a>
+                                <Link to={"/players"} activeClassName="active">Lista graczy</Link>
+                                <Link to={"/random-pokemon"} activeClassName="active">Losuj pokemona</Link>
+                                <Link to={"/profil"} activeClassName="active">Walcz z dzikim pokemonem</Link>
                             </>
                         }
                     </div>

@@ -1,0 +1,70 @@
+.team-table{
+    width:70%; 
+    margin-left:15%; 
+    margin-right:15%;
+    margin-top: 5%;
+    color: white;
+    background: rgba(33, 37, 41, 0.7);
+    position: relative;
+    height: 200px;
+    overflow: auto;
+}
+
+.team-table td:hover {
+    color: white!important;
+    cursor: pointer;
+}
+
+.team-table tr:hover {
+    color: white!important;
+    cursor: pointer;
+}
+
+.team-table tbody:hover {
+    color: white!important;
+    cursor: pointer;
+}
+
+.team-table tr {
+    vertical-align: middle;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.team-table td {
+    vertical-align: middle;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.team-table tbody {
+    vertical-align: middle;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.team-table thead {
+    vertical-align: middle;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.player-login{
+    position: fixed;
+    left: 50%;
+    top: 23%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: rgba(33, 37, 41, 0.9);
+    border-radius: 10px;
+    color: white;
+    padding: 2%;
+}

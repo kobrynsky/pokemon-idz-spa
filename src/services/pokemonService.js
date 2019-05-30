@@ -26,19 +26,20 @@ async function drawPokemon() {
 async function getPokemons(ids) {
     let pokemons = []
 
-    ids.forEach(async id => {
-        const response = await axios.get(POKEMON_API_URL + id);
-
-        let pokemon = new Pokemon(response.data.id, response.data.name, response.data.sprites);
+    for (let i = 0; i < ids.length; i++) {
+        let response = await axios.get(POKEMON_API_URL + ids[i]);
+        let pokemon = new Pokemon(response.data.id,
+            response.data.name,
+            response.data.sprites);
 
         response.data.stats.forEach(stat => {
             let skill = new Skill(stat.stat.name, stat.base_stat);
             pokemon.skills.push(skill);
         });
-
         pokemons.push(pokemon);
-    });
-    return pokemons;
+    }
+    return Array.from(pokemons);
+
 }
 
 async function getPokemon(id) {
@@ -52,4 +53,14 @@ async function getPokemon(id) {
     return pokemon;
 }
 
-export { getPokemon, drawPokemon, getPokemons }
+function showPokemonInfo(pokemon){
+    console.log(pokemon);
+    let info = "";
+    for (let i = 0; i < pokemon.skills.length; i++) {
+        info += pokemon.skills[i].name + ": " + pokemon.skills[i].stat + "\n";
+    }
+
+    alert(info);
+}
+
+export { getPokemon, drawPokemon, getPokemons, showPokemonInfo }
