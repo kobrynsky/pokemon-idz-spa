@@ -1,11 +1,10 @@
 import React from "react";
 import Bush from '../../assets/bush.png';
-import { drawPokemon } from '../../services/pokemonService';
+import { getPokemonInfo, getRandomPokemon } from '../../services/pokemonService';
 import "./RandomPokemon.css";
 import { Media } from 'reactstrap';
 import { BASE_URL } from "../../constants";
 import axios from 'axios';
-import { showPokemonInfo } from '../../services/pokemonService';
 
 export default class RandomPokemon extends React.Component {
     constructor(props) {
@@ -21,7 +20,7 @@ export default class RandomPokemon extends React.Component {
     drawPokemon = async e => {
         if (!this.state.clicked) {
             let bushId = e.currentTarget.getAttribute("id");
-            let pokemon = await drawPokemon();
+            let pokemon = await getRandomPokemon();
 
             let savePokemonDto = {
                 pokemonId: pokemon.id,
@@ -60,7 +59,7 @@ export default class RandomPokemon extends React.Component {
         let text;
 
         if (clicked) {
-            text = <div className="main-text"  onClick={()=> showPokemonInfo(pokemon)}>Uuuuu! <br></br>Wylosowałeś: {pokemon.name}
+            text = <div className="main-text"  onClick={()=> getPokemonInfo(pokemon)}>Uuuuu! <br></br>Wylosowałeś: {pokemon.name}
 
             </div>
         }

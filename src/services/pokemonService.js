@@ -1,4 +1,4 @@
-import { POKEMON_API_URL, MAX_POKEMON_ID } from "../constants";
+import { POKEMON_API_URL, MAX_POKEMON_ID, BASE_URL } from "../constants";
 import axios from 'axios';
 
 class Pokemon {
@@ -17,7 +17,7 @@ class Skill {
     }
 }
 
-async function drawPokemon() {
+async function getRandomPokemon() {
     let id = Math.floor(Math.random() * MAX_POKEMON_ID) + 1;
     let pokemon = getPokemon(id);
     return pokemon;
@@ -58,7 +58,17 @@ async function getPokemon(id) {
     return pokemon;
 }
 
-function showPokemonInfo(pokemon){
+async function getRandomUserPokemon(id) {
+    const response = await axios.get(BASE_URL + 'game/getUserTeam/' + id)
+    // console.log(response);
+    const pokemondIds = response.data.pokemonIds;
+    var randId = pokemondIds[Math.floor(Math.random() * pokemondIds.length)];
+    let pokemon = await getPokemon(randId);
+    // console.log(pokemon);
+    return pokemon;
+}
+
+function getPokemonInfo(pokemon){
     console.log(pokemon);
     let info = "";
     for (let i = 0; i < pokemon.skills.length; i++) {
@@ -69,4 +79,4 @@ function showPokemonInfo(pokemon){
 }
 
 
-export { getPokemon, drawPokemon, getPokemons, showPokemonInfo }
+export { getPokemon, getRandomPokemon, getPokemons, getPokemonInfo, getRandomUserPokemon}

@@ -21,7 +21,7 @@ class HomePage extends Component {
                                 Co dalej?
                                 <Link to={"/players"} activeClassName="active">Lista graczy</Link>
                                 <Link to={"/random-pokemon"} activeClassName="active">Losuj pokemona</Link>
-                                <Link to={"/profil"} activeClassName="active">Walcz z dzikim pokemonem</Link>
+                                <Link to={"/battle-with-random-pokemon"} activeClassName="active">Walcz z dzikim pokemonem</Link>
                             </>
                         }
                     </div>

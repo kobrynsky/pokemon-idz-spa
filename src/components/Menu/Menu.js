@@ -2,7 +2,6 @@ import React from 'react';
 import "./Menu.css";
 import Logo from '../../assets/pokemon_logo.png';
 import LoginImg from '../../assets/pokeball.png';
-import HomePage from "../HomePage/HomePage";
 import { Link } from 'react-router-dom';
 import {
   Collapse,

@@ -3,7 +3,7 @@ import { BASE_URL } from "../../constants";
 import axios from 'axios';
 import { Table } from 'react-bootstrap'
 import "./PlayerTeam.css";
-import { getPokemons, showPokemonInfo } from '../../services/pokemonService';
+import { getPokemons, getPokemonInfo } from '../../services/pokemonService';
 
 export default class PlayerTeam extends React.Component {
     constructor(props) {
@@ -68,9 +68,9 @@ export default class PlayerTeam extends React.Component {
                     <tbody>
                         {pokemons.map(pokemon =>
                             <tr key={pokemon.id}>
-                                <td onClick={()=> showPokemonInfo(pokemon)}>{pokemon.name}</td>
-                                <td onClick={()=> showPokemonInfo(pokemon)}><img src={pokemon.sprites.front_default} alt="pokemon"></img></td>
-                                <td onClick={()=> this.deletePokemon(pokemon)}>X</td>                            
+                                <td onClick={()=> getPokemonInfo(pokemon)}>{pokemon.name}</td>
+                                <td onClick={()=> getPokemonInfo(pokemon)}><img src={pokemon.sprites.front_default} alt="pokemon"></img></td>
+                                <td onClick={()=> this.deletePokemon(pokemon)}>X</td>                          
                             </tr>
 
                         )}

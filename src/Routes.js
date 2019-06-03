@@ -8,6 +8,7 @@ import PlayersTable from "./components/PlayersTable/PlayersTable";
 import RandomPokemon from "./components/RandomPokemon/RandomPokemon";
 import Profile from "./components/Profile/Profile";
 import PlayerTeam from "./components/PlayerTeam/PlayerTeam";
+import BattleWithRandomPokemon from "./components/BattleWithRandomPokemon/BattleWithRandomPokemon";
 import Menu from "./components/Menu/Menu";
 
 export default () =>
@@ -21,6 +22,7 @@ export default () =>
             <Route path="/random-pokemon" exact component={RandomPokemon} />
             <Route path="/profile" exact component={Profile} />
             <Route path="/user-team" exact component={PlayerTeam} />
+            <Route path="/battle-with-random-pokemon" exact component={BattleWithRandomPokemon} />
             <Route component={NotFound} />
         </Switch>
     </BrowserRouter>;
