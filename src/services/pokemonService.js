@@ -7,6 +7,7 @@ class Pokemon {
         this.name = name;
         this.sprites = sprites;
         this.skills = [];
+        this.abilities = [];
     }
 }
 
@@ -14,6 +15,13 @@ class Skill {
     constructor(name, stat) {
         this.name = name;
         this.stat = stat;
+    }
+}
+
+class Ability {
+    constructor(name, power) {
+        this.name = name;
+        this.power = power;
     }
 }
 
@@ -38,37 +46,38 @@ async function getPokemons(ids) {
         });
         pokemons.push(pokemon);
     }
-    let sortedPokemons = pokemons.sort(function(a, b) {
+    let sortedPokemons = pokemons.sort(function (a, b) {
         var textA = a.name.toUpperCase();
         var textB = b.name.toUpperCase();
         return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
     });
     return Array.from(sortedPokemons);
-
 }
 
 async function getPokemon(id) {
     let pokemon;
     const response = await axios.get(POKEMON_API_URL + id);
+
     pokemon = new Pokemon(response.data.id, response.data.name, response.data.sprites);
     response.data.stats.forEach(stat => {
         let skill = new Skill(stat.stat.name, stat.base_stat);
         pokemon.skills.push(skill);
     });
+
+    pokemon.abilities = await getPokemonAbilities(response.data);
+    console.log(pokemon.abilities)
     return pokemon;
 }
 
 async function getRandomUserPokemon(id) {
     const response = await axios.get(BASE_URL + 'game/getUserTeam/' + id)
-    // console.log(response);
     const pokemondIds = response.data.pokemonIds;
     var randId = pokemondIds[Math.floor(Math.random() * pokemondIds.length)];
     let pokemon = await getPokemon(randId);
-    // console.log(pokemon);
     return pokemon;
 }
 
-function getPokemonInfo(pokemon){
+function getPokemonInfo(pokemon) {
     console.log(pokemon);
     let info = "";
     for (let i = 0; i < pokemon.skills.length; i++) {
@@ -78,5 +87,28 @@ function getPokemonInfo(pokemon){
     alert(info);
 }
 
+async function getPokemonAbilities(pokemon) {
+    let moves = getRandomFromArray(pokemon.moves, 4);
+    let abilities = [];
 
-export { getPokemon, getRandomPokemon, getPokemons, getPokemonInfo, getRandomUserPokemon}
+    for (let i = 0; i < moves.length; i++) {
+        let response = await axios.get(moves[i].move.url)
+        if (response.data.power === null) response.data.power += pokemon.stats[3].base_stat;
+        let ability = new Ability(moves[i].move.name, response.data.power);
+        abilities.push(ability);
+    }
+    return abilities;
+}
+
+
+function getRandomFromArray(array, howMany) {
+    let rands = [];
+    for (let i = 0; i < howMany; i++) {
+        let rand = array[Math.floor(Math.random() * array.length)];
+        rands.push(rand);
+    }
+    return rands;
+}
+
+
+export { getPokemon, getRandomPokemon, getPokemons, getPokemonInfo, getRandomUserPokemon }
