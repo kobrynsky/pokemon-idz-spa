@@ -93,11 +93,12 @@ async function getUserMainPokemon(id) {
     return pokemon;
 }
 
-function getPokemonInfo(pokemon) {
+async function getPokemonInfo(pokemon) {
+    let response = await axios.get(POKEMON_API_URL + pokemon.id);
     let info = "";
     for (let i = 3; i < pokemon.skills.length; i++) {
         if(pokemon.skills[i].name === "hp")
-            pokemon.skills[i].stat *= 5;
+            pokemon.skills[i].stat = 5*response.data.stats[5].base_stat;
         info += pokemon.skills[i].name + ": " + pokemon.skills[i].stat + "\n";
     }
 
