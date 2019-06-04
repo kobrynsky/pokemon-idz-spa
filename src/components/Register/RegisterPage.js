@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import "./RegisterPage.css";
-import { Button, FormGroup, FormControl } from "react-bootstrap";
+import { Button, FormGroup, FormControl, FormCheck } from "react-bootstrap";
 import '../../App.css'
 import { BASE_URL } from '../../constants'
 import axios from 'axios';
+import RODO from '../../assets/rodo.pdf';
+import regulations from '../../assets/regulamin.pdf';
+
 
 
 export default class RegisterPage extends Component {
@@ -17,16 +20,26 @@ export default class RegisterPage extends Component {
             lastName: "",
             password: "",
             matchingPassword: "",
+            accept: false,
         };
     }
 
     validateForm() {
-        return this.state.email.length > 0 && this.state.password.length > 0 && this.state.matchingPassword.length > 0 && this.state.login.length > 0 && this.state.firstName.length > 0 && this.state.lastName.length > 0 && this.state.password === this.state.matchingPassword;
+        return this.state.email.length > 0 && this.state.password.length > 0 &&
+            this.state.matchingPassword.length > 0 && this.state.login.length > 0 &&
+            this.state.firstName.length > 0 && this.state.lastName.length > 0 &&
+            this.state.password === this.state.matchingPassword && this.state.accept;
     }
 
     handleChange = event => {
         this.setState({
             [event.target.id]: event.target.value
+        });
+    }
+
+    handleCheckBoxChange = () => {
+        this.setState({
+            accept: !this.state.accept,
         });
     }
 
@@ -110,6 +123,15 @@ export default class RegisterPage extends Component {
                             type="password"
                             placeholder="powtórz hasło"
                         />
+                    </FormGroup>
+                    <FormGroup>
+                        <label className="regulations-label">
+                            <input controlId="accept" className="checkBoxAccept" onChange={this.handleCheckBoxChange} value={this.state.accept} type="checkbox" />
+                            Akceptuję   politykę prywatności RODO
+                        <a href={regulations} target='_blank'> regulamin </a>
+                            i
+                        <a href={RODO} target='_blank'> politykę prywatności RODO</a>
+                        </label>
                     </FormGroup>
                     <Button
                         block
