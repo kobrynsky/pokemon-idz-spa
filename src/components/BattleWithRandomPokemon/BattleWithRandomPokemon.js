@@ -1,6 +1,6 @@
 import React from "react";
 import "./BattleWithRandomPokemon.css";
-import { getRandomUserPokemon, getRandomPokemon, getRandomFromArray } from '../../services/pokemonService';
+import { getUserMainPokemon, getRandomPokemon, getRandomFromArray } from '../../services/pokemonService';
 import { Media } from 'reactstrap';
 import { BASE_URL } from "../../constants";
 import axios from "axios";
@@ -22,9 +22,9 @@ export default class BattleWithRandomPokemon extends React.Component {
 
     async componentDidMount() {
         let userId = localStorage.getItem('id');
-        let userPokemon = await getRandomUserPokemon(userId);
+        let userPokemon = await getUserMainPokemon(userId);
         if (userPokemon == null) {
-            alert("Nie masz żadnych pokemonów!");
+            alert("Nie masz żadnych pokemonów lub nie wybrałeś głównego!");
             this.props.history.push('/')
         }
         else {
@@ -41,7 +41,7 @@ export default class BattleWithRandomPokemon extends React.Component {
             let { userPokemon, wildPokemon } = this.state;
             await this.sleep(2000);
             this.setState({ wildPokemon: wildPokemon });
-            let damage = this.makeDamageToPokemon(ability, wildPokemon);
+            let damage = this.makeDamageToPokemon(userPokemon, wildPokemon, ability);
             document.getElementById('player-pokemon-sprite').style.animationPlayState = 'running';
             let text = "[GRACZ] Pokemon " + userPokemon.name + " użył " + ability.name + " i zadał " + damage + " obrażeń\n";
             this.addText(text);
@@ -53,7 +53,7 @@ export default class BattleWithRandomPokemon extends React.Component {
                 await this.sleep(1000);
 
                 let wildPokemonAbility = getRandomFromArray(wildPokemon.abilities, 1)[0];
-                let damage2 = await this.makeDamageToPokemon(wildPokemonAbility, userPokemon);
+                let damage2 = await this.makeDamageToPokemon(wildPokemon, userPokemon, wildPokemonAbility);
                 document.getElementById('wild-pokemon-sprite').style.animationPlayState = 'running';
                 let text2 = "[KOMPUTER] Pokemon " + wildPokemon.name + " użył " + wildPokemonAbility.name + " i zadał " + damage2 + " obrażeń\n";
                 this.addText(text2);
@@ -133,10 +133,11 @@ export default class BattleWithRandomPokemon extends React.Component {
         return false;
     }
 
-    makeDamageToPokemon(ability, pokemon) {
-        let damage = ability.power - Math.round((pokemon.skills[3].stat / 2.5));
+    makeDamageToPokemon(attackerPokemon, attackedPokemon, ability) {
+        let attackerAttack = attackerPokemon.skills[4].stat;
+        let damage = ability.power - Math.round((attackedPokemon.skills[3].stat)) + attackerAttack;
         if (damage < 0) damage = 0;
-        pokemon.skills[5].stat -= damage;
+        attackedPokemon.skills[5].stat -= damage;
         return damage;
     }
 

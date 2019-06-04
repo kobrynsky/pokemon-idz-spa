@@ -60,6 +60,8 @@ async function getPokemon(id) {
 
     pokemon = new Pokemon(response.data.id, response.data.name, response.data.sprites);
     response.data.stats.forEach(stat => {
+        if(stat.stat.name === "hp")
+            stat.base_stat *= 5;
         let skill = new Skill(stat.stat.name, stat.base_stat);
         pokemon.skills.push(skill);
     });
@@ -80,9 +82,22 @@ async function getRandomUserPokemon(id) {
     return pokemon;
 }
 
+async function getUserMainPokemon(id) {
+    const response = await axios.get(BASE_URL + 'game/getUserTeam/' + id)
+    const mainPokemonId = response.data.mainPokemonId;
+    console.log(response)
+    if(mainPokemonId <= 0 || mainPokemonId == null){
+        return null;
+    }
+    let pokemon = await getPokemon(mainPokemonId);
+    return pokemon;
+}
+
 function getPokemonInfo(pokemon) {
     let info = "";
     for (let i = 0; i < pokemon.skills.length; i++) {
+        if(pokemon.skills[i].name === "hp")
+            pokemon.skills[i].stat *= 5;
         info += pokemon.skills[i].name + ": " + pokemon.skills[i].stat + "\n";
     }
 
@@ -113,4 +128,4 @@ function getRandomFromArray(array, howMany) {
 }
 
 
-export { getPokemon, getRandomPokemon, getPokemons, getPokemonInfo, getRandomUserPokemon, getRandomFromArray }
+export { getPokemon, getRandomPokemon, getPokemons, getPokemonInfo, getRandomUserPokemon, getRandomFromArray, getUserMainPokemon }

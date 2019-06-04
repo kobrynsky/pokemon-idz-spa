@@ -20,7 +20,7 @@ export default class PlayerTeam extends React.Component {
         const response = await axios.get(BASE_URL + 'game/getUserTeam/' + userId)
         const pokemondIds = response.data.pokemonIds;
         let pokemons = await getPokemons(pokemondIds);
-        this.setState({ pokemons: pokemons, login: response.data.login });
+        this.setState({ pokemons: pokemons, login: response.data.login, mainPokemonId: response.data.mainPokemonId });
 
     }
 
