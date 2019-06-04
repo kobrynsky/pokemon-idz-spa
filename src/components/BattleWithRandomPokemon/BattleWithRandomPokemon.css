@@ -1,6 +1,8 @@
 .game-history {
     min-width:100%!important;
     min-height:100px!important;
+    background-color :gainsboro;
+    color: black; 
 }
 
 

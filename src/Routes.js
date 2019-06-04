@@ -9,6 +9,7 @@ import RandomPokemon from "./components/RandomPokemon/RandomPokemon";
 import PlayerTeam from "./components/PlayerTeam/PlayerTeam";
 import BattleWithRandomPokemon from "./components/BattleWithRandomPokemon/BattleWithRandomPokemon";
 import Menu from "./components/Menu/Menu";
+import Credits from "./components/Credits/Credits";
 
 export default () =>
     <BrowserRouter>
@@ -21,6 +22,7 @@ export default () =>
             <Route path="/random-pokemon" exact component={RandomPokemon} />
             <Route path="/user-team" exact component={PlayerTeam} />
             <Route path="/battle-with-random-pokemon" exact component={BattleWithRandomPokemon} />
+            <Route path="/credits" exact component={Credits} />
             <Route component={NotFound} />
         </Switch>
     </BrowserRouter>;

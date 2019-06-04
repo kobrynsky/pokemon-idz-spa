@@ -95,7 +95,7 @@ async function getUserMainPokemon(id) {
 
 function getPokemonInfo(pokemon) {
     let info = "";
-    for (let i = 0; i < pokemon.skills.length; i++) {
+    for (let i = 3; i < pokemon.skills.length; i++) {
         if(pokemon.skills[i].name === "hp")
             pokemon.skills[i].stat *= 5;
         info += pokemon.skills[i].name + ": " + pokemon.skills[i].stat + "\n";

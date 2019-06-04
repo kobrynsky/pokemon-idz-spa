@@ -22,6 +22,7 @@ class HomePage extends Component {
                                 <Link to={"/players"}>Lista graczy</Link>
                                 <Link to={"/random-pokemon"}>Losuj pokemona</Link>
                                 <Link to={"/battle-with-random-pokemon"}>Walcz z dzikim pokemonem</Link>
+                                <Link to={"/credits"}>O grze</Link>
                             </>
                         }
                     </div>
