@@ -41,7 +41,7 @@ export default class RandomPokemon extends React.Component {
         axios.post(BASE_URL + 'game/savePokemon', savePokemonDto)
             .then(function (response) {
                 console.log(response);
-                alert("Zapisano Pokemona w bazie!")
+                // alert("Zapisano Pokemona w bazie!")
             })
             .catch(function (error) {
                 console.log(error);

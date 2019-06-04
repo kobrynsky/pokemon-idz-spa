@@ -1,10 +1,10 @@
 import React from "react";
 import "./BattleWithRandomPokemon.css";
 import { getUserMainPokemon, getRandomPokemon, getRandomFromArray } from '../../services/pokemonService';
-import { Media } from 'reactstrap';
 import { BASE_URL } from "../../constants";
 import axios from "axios";
 import { Table } from 'react-bootstrap'
+import { Button } from 'reactstrap'
 
 
 export default class BattleWithRandomPokemon extends React.Component {
@@ -152,6 +152,12 @@ export default class BattleWithRandomPokemon extends React.Component {
         textArea.value += oldText;
     }
 
+    runAway() {
+        if (window.confirm("Czy na pewno chcesz uciec?"))
+            this.props.history.push('/')
+    }
+
+
     render() {
         let { userPokemon, wildPokemon } = this.state;
 
@@ -218,6 +224,7 @@ export default class BattleWithRandomPokemon extends React.Component {
                         <textarea disabled id="game-history" className="game-history" placeholder="Poprzednie ruchy...">
                         </textarea>
                     </div>
+                    <Button className="run-away-button" color="danger" onClick={() => this.runAway()}>Uciekaj!</Button>
                 </div>
             )
                 :
