@@ -65,7 +65,6 @@ async function getPokemon(id) {
     });
 
     pokemon.abilities = await getPokemonAbilities(response.data);
-    console.log(pokemon.abilities)
     return pokemon;
 }
 
@@ -78,7 +77,6 @@ async function getRandomUserPokemon(id) {
 }
 
 function getPokemonInfo(pokemon) {
-    console.log(pokemon);
     let info = "";
     for (let i = 0; i < pokemon.skills.length; i++) {
         info += pokemon.skills[i].name + ": " + pokemon.skills[i].stat + "\n";
@@ -111,4 +109,4 @@ function getRandomFromArray(array, howMany) {
 }
 
 
-export { getPokemon, getRandomPokemon, getPokemons, getPokemonInfo, getRandomUserPokemon }
+export { getPokemon, getRandomPokemon, getPokemons, getPokemonInfo, getRandomUserPokemon, getRandomFromArray }

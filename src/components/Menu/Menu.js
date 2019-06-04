@@ -14,6 +14,7 @@ import {
   Media,
   Label
 } from 'reactstrap';
+import HomePage from '../HomePage/HomePage';
 
 
 export default class Menu extends React.Component {
@@ -36,17 +37,15 @@ export default class Menu extends React.Component {
     return (
       <>
         <Navbar className="navbar" color="dark" expand="md">
-          <Link exec to='/'>
-            <NavbarBrand className="brand">
+            <NavbarBrand exec to="/" className="brand">
               <Media className="logo" src={Logo} alt="pokemon_logo" />
               <Label className="logo-label">pokemon idź</Label>
             </NavbarBrand>
-          </Link>
 
           <NavbarToggler />
           <Collapse navbar>
             <Nav className="ml-auto" navbar>
-              <NavItem className="login">
+              <div className="login">
                 {localStorage.getItem('id') == null ?
                   <>
                     <Link exec to='/login'>
@@ -61,19 +60,12 @@ export default class Menu extends React.Component {
                   </>
                   :
                   <>
-                    <Link exec to='/profile'>
-                      <NavLink className="login-name">{localStorage.getItem('login')}</NavLink>
-
-                    </Link>
+                    <NavLink exec to='/user-team' className="login-name">{localStorage.getItem('login')}</NavLink>
                     <Media className="login-img" src={LoginImg} alt="login_image" />
-
-                    <Link exec to='/'>
-                    <NavLink className="log-out-link" onClick={this.handleLogout}>wyloguj</NavLink>
-
-                    </Link>
-                  </>
+                    <NavLink exec to='/' className="log-out-link" onClick={this.handleLogout}>wyloguj</NavLink>
+                    </>
                 }
-              </NavItem>
+              </div>
             </Nav>
           </Collapse>
         </Navbar>
