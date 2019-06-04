@@ -17,7 +17,7 @@ export default class PlayersTable extends React.Component {
         axios.get(BASE_URL + 'user/getAll')
             .then(function (response) {
                 console.log(response);
-                self.setState({ data: response.data });
+                self.setState({ data: response.data.sort((a,b) => (a.wins < b.wins) ? 1 : ((b.wins < a.wins) ? -1 : 0))})
             })
             .catch(function (error) {
                 console.log(error);
