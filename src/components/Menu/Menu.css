@@ -8,8 +8,7 @@
 
 .brand {
   color: var(--text-color) !important;
-  font-size: 200% !important;
-  display: flex;
+  font-size: 150% !important;
   justify-content: center;
   align-items: center;
 }
@@ -22,7 +21,7 @@
 
 .login-link, .login-name {
   color: var(--text-color) !important;
-  font-size: 200% !important;
+  font-size: 150% !important;
   display: inline-block;
   justify-content: center;
   align-items: center;
@@ -30,24 +29,21 @@
 
 .register-link, .log-out-link {
   color: var(--text-color) !important;
-  font-size: 200% !important;
-  padding-left: 5% !important;
+  font-size: 150% !important;
   display: inline-block;
   justify-content: center;
   align-items: center;
 }
 
 .login-img {
-  padding-left: 5% !important;
-  margin-top: 5px !important;
   text-align: center !important;
   align-items: center !important;
   display: inline-block !important;
-  width: 20%;
+  width: 50px;
 }
 
 .logo {
-  margin-top: -15px !important;
+   margin-top: -10px !important; 
   text-align: center !important;
   align-items: center !important;
   display: inline-block !important;

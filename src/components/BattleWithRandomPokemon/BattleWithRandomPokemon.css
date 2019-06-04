@@ -43,15 +43,15 @@
 }
 
 .hp{
-    background-color: rgba(255, 0, 0, 0.7);
+    background-color: rgba(255, 0, 0, 0.4);
 }
 
 .attack{
-    background-color: rgba(0, 255, 0, 0.7); 
+    background-color: rgba(0, 200, 0, 0.4); 
 }
 
 .defence{
-    background-color: rgba(0, 255, 0, 0.7); 
+    background-color: rgba(0, 200, 0, 0.4); 
 }
 
 .abilities:hover{
@@ -87,7 +87,7 @@
   }
 
   .abilities td:hover{
-    background-color: rgba(0, 111, 255, 0.7);
+    background-color: rgba(0, 111, 255, 0.4);
   }
 
   .run-away-button{

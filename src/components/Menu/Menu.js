@@ -24,20 +24,16 @@ export default class Menu extends React.Component {
     this.forceUpdate();
   }
 
-  localStorageUpdated(){
-    console.log("XD");
-
-}
-
   render() {
     return (
       <>
         <Navbar className="navbar" color="dark" expand="md">
-            <Link exec to="/" className="brand">
-              <Media className="logo" src={Logo} alt="pokemon_logo" />
-              <Label className="logo-label">pokemon idź</Label>
-            </Link>
-
+          <Link exec to="/" className="brand">
+            <Media className="logo" src={Logo} alt="pokemon_logo" />
+            <Label className="logo-label">
+              pokemon idź
+              </Label>
+          </Link>
           <NavbarToggler />
           <Collapse navbar>
             <Nav className="ml-auto" navbar>
@@ -49,15 +45,19 @@ export default class Menu extends React.Component {
                     </Link>
                     <Media className="login-img" src={LoginImg} alt="login_image" />
                     <Link className="register-link" exec to='/register'>
-                    rejestracja
+                      rejestracja
                     </Link>
                   </>
                   :
                   <>
-                    <Link to='/user-team' className="login-name">{localStorage.getItem('login')}</Link>
+                    <Link to='/user-team' className="login-name">
+                      {localStorage.getItem('login')}
+                    </Link>
                     <Media className="login-img" src={LoginImg} alt="login_image" />
-                    <Link to='/' className="log-out-link" onClick={this.handleLogout}>wyloguj</Link>
-                    </>
+                    <Link to='/' className="log-out-link" onClick={this.handleLogout}>
+                      wyloguj&nbsp;&nbsp;&nbsp;&nbsp;
+                    </Link>
+                  </>
                 }
               </div>
             </Nav>
