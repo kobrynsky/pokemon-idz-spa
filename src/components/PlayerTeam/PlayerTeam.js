@@ -11,6 +11,7 @@ export default class PlayerTeam extends React.Component {
         this.state = {
             login: "",
             pokemons: [],
+            mainPokemonId: null,
         }
 
     }
@@ -53,6 +54,30 @@ export default class PlayerTeam extends React.Component {
             console.log(this.state.pokemons)
     }
 
+    async setMainPokemon(pokemon)
+    {
+        let self = this;
+        let saveMainPokemonDto = {            
+            userId: localStorage.getItem('id'),
+            mainPokemonId: pokemon.id,
+        }
+        console.log(saveMainPokemonDto)
+
+        await axios.post(BASE_URL + 'game/saveMainPokemon', saveMainPokemonDto)
+            .then(function (response) {
+                // alert("Zapisano głównego pokemona z bazy!")
+                 self.setState({ mainPokemonId: pokemon.id });
+                 self.forceUpdate();
+
+
+            })
+            .catch(function (error) {
+                console.log(error);
+                alert("Błąd podczas zapisywania Pokemona do bazy!");
+            });
+            console.log(this.state.pokemons)
+    }
+
     render() {
         const pokemons = this.state.pokemons;
         return (
@@ -62,14 +87,16 @@ export default class PlayerTeam extends React.Component {
                         <tr>
                             <th>Pokemon</th>
                             <th>Wygląd</th>
+                            <th>Główny</th>
                             <th>Usuń</th>
                         </tr>
                     </thead>
                     <tbody>
                         {pokemons.map(pokemon =>
-                            <tr key={pokemon.id}>
+                            <tr key={pokemon.id}>                                
                                 <td onClick={()=> getPokemonInfo(pokemon)}>{pokemon.name}</td>
                                 <td onClick={()=> getPokemonInfo(pokemon)}><img src={pokemon.sprites.front_default} alt="pokemon"></img></td>
+                                <td onClick={()=> this.setMainPokemon(pokemon)}> {pokemon.id===this.state.mainPokemonId ? "V" : ""}</td>
                                 <td onClick={()=> this.deletePokemon(pokemon)}>X</td>                          
                             </tr>
 
