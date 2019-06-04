@@ -13,13 +13,14 @@
 .wild-pokemon-space{
     float: left;
     width: 45%;
-    margin-left: 5%;
+    float: right;
     font-weight: 500;
 }
 
 .player-space{
     float: left;
     width: 45%;
+    
     font-weight: 500;
 }
 
