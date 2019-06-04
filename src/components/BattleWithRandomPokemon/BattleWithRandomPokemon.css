@@ -85,3 +85,7 @@
       transform: rotate(360deg);
     }
   }
+
+  .abilities td:hover{
+    background-color: rgba(0, 111, 255, 0.7);
+  }
