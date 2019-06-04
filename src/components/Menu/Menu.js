@@ -7,14 +7,10 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
-  NavItem,
-  NavLink,
   Media,
   Label
 } from 'reactstrap';
-import HomePage from '../HomePage/HomePage';
 
 
 export default class Menu extends React.Component {
@@ -37,10 +33,10 @@ export default class Menu extends React.Component {
     return (
       <>
         <Navbar className="navbar" color="dark" expand="md">
-            <NavbarBrand exec to="/" className="brand">
+            <Link exec to="/" className="brand">
               <Media className="logo" src={Logo} alt="pokemon_logo" />
               <Label className="logo-label">pokemon idź</Label>
-            </NavbarBrand>
+            </Link>
 
           <NavbarToggler />
           <Collapse navbar>
@@ -48,21 +44,19 @@ export default class Menu extends React.Component {
               <div className="login">
                 {localStorage.getItem('id') == null ?
                   <>
-                    <Link exec to='/login'>
-                      <NavLink className="login-link">logowanie</NavLink>
-
+                    <Link className="login-link" exec to='/login'>
+                      logowanie
                     </Link>
                     <Media className="login-img" src={LoginImg} alt="login_image" />
-                    <Link exec to='/register'>
-                      <NavLink className="register-link">rejestracja</NavLink>
-
+                    <Link className="register-link" exec to='/register'>
+                    rejestracja
                     </Link>
                   </>
                   :
                   <>
-                    <NavLink exec to='/user-team' className="login-name">{localStorage.getItem('login')}</NavLink>
+                    <Link to='/user-team' className="login-name">{localStorage.getItem('login')}</Link>
                     <Media className="login-img" src={LoginImg} alt="login_image" />
-                    <NavLink exec to='/' className="log-out-link" onClick={this.handleLogout}>wyloguj</NavLink>
+                    <Link to='/' className="log-out-link" onClick={this.handleLogout}>wyloguj</Link>
                     </>
                 }
               </div>
