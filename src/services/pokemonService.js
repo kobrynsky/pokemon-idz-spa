@@ -71,6 +71,10 @@ async function getPokemon(id) {
 async function getRandomUserPokemon(id) {
     const response = await axios.get(BASE_URL + 'game/getUserTeam/' + id)
     const pokemondIds = response.data.pokemonIds;
+    if(pokemondIds.length <= 0){
+        return null;
+    }
+
     var randId = pokemondIds[Math.floor(Math.random() * pokemondIds.length)];
     let pokemon = await getPokemon(randId);
     return pokemon;
