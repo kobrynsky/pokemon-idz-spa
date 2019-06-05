@@ -9,3 +9,14 @@
     }
   }
   
+
+  .regulations{
+    background: rgba(255, 255, 255, 0.4);
+    color: black!important;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  
+  .regulations label a:hover{
+    color: darkmagenta;
+  }

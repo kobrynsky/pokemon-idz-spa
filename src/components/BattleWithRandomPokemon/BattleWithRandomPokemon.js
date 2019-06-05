@@ -39,7 +39,7 @@ export default class BattleWithRandomPokemon extends React.Component {
         if (!this.state.clicked) {
             this.state.clicked = true;
             let { userPokemon, wildPokemon } = this.state;
-            await this.sleep(2000);
+            await this.sleep(1000);
             this.setState({ wildPokemon: wildPokemon });
             let damage = this.makeDamageToPokemon(userPokemon, wildPokemon, ability);
             document.getElementById('player-pokemon-sprite').style.animationPlayState = 'running';
@@ -50,7 +50,7 @@ export default class BattleWithRandomPokemon extends React.Component {
             let end = await this.checkGameStatus(wildPokemon, userPokemon);
             this.setState({ wildPokemon: wildPokemon, userPokemon: userPokemon });
             if (!end) {
-                await this.sleep(1000);
+                await this.sleep(500);
 
                 let wildPokemonAbility = getRandomFromArray(wildPokemon.abilities, 1)[0];
                 let damage2 = await this.makeDamageToPokemon(wildPokemon, userPokemon, wildPokemonAbility);
@@ -60,7 +60,7 @@ export default class BattleWithRandomPokemon extends React.Component {
                 document.getElementById('wild-pokemon-sprite').style.animationPlayState = 'paused';
                 console.log(userPokemon);
                 end = await this.checkGameStatus(wildPokemon, userPokemon);
-                await this.sleep(1000);
+                await this.sleep(500);
                 console.log(end);
 
                 this.setState({ wildPokemon: wildPokemon, userPokemon: userPokemon });

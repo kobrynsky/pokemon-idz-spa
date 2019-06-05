@@ -124,7 +124,7 @@ export default class RegisterPage extends Component {
                             placeholder="powtórz hasło"
                         />
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup className="regulations">
                         <label className="regulations-label">
                             <input controlId="accept" className="checkBoxAccept" onChange={this.handleCheckBoxChange} value={this.state.accept} type="checkbox" />
                             Akceptuję   politykę prywatności RODO

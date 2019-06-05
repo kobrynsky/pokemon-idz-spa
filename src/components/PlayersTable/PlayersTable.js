@@ -17,7 +17,7 @@ export default class PlayersTable extends React.Component {
         axios.get(BASE_URL + 'user/getAll')
             .then(function (response) {
                 console.log(response);
-                self.setState({ data: response.data.sort((a,b) => (a.wins < b.wins) ? 1 : ((b.wins < a.wins) ? -1 : 0))})
+                self.setState({ data: response.data.sort((a, b) => (a.wins < b.wins) ? 1 : ((b.wins < a.wins) ? -1 : 0)) })
             })
             .catch(function (error) {
                 console.log(error);
@@ -36,6 +36,7 @@ export default class PlayersTable extends React.Component {
                         <th>Email</th>
                         <th>Zwycięstwa</th>
                         <th>Porażki</th>
+                        <th>Ratio</th>
                     </tr>
                 </thead>
                 <tbody>{this.state.data.map(function (item, key) {
@@ -47,6 +48,7 @@ export default class PlayersTable extends React.Component {
                             <td>{item.email}</td>
                             <td>{item.wins}</td>
                             <td>{item.loses}</td>
+                            <td>{(item.loses === 0) ? 100 : (Math.round(item.wins /(item.loses + item.wins)*100))}%</td>
                         </tr>
 
                     )
