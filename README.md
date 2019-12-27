@@ -1,4 +1,5 @@
-## Pokemon Idź - Frontend
+# Pokemon Idź
+### Web Pokemon Go (but slightly less extended ;) )
 
 If you want to run this project:
 - git clone [repository]
@@ -26,8 +27,6 @@ export const BASE_URL = "https://your-api:url";
 ![](https://raw.githubusercontent.com/blc132/pokemon-idz-spa/master/images/5_PoLosowanku.png)
 
 ![](https://raw.githubusercontent.com/blc132/pokemon-idz-spa/master/images/6_Profil.png)
-
-
 
 ![](https://raw.githubusercontent.com/blc132/pokemon-idz-spa/master/images/7_ListaGraczy.png)
 
