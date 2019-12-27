@@ -5,6 +5,15 @@ If you want to run this project:
 - npm install (in repository directory)
 - npm start
 
+You also need an API, you can choose whether you prefer in .NET Core or Spring:
+- [C# .NET Core WebApi](https://github.com/blc132/pokemon-idz-api-core "C# .NET Core WebApi")
+- [Java Spring](https://github.com/blc132/pokemon-idz-api "Java Spring")
+
+And need to point to API url in constants.js:
+```javascript
+export const BASE_URL = "https://your-api:url";
+```
+
 ## Screenshots
 ![](https://raw.githubusercontent.com/blc132/pokemon-idz-spa/master/images/1_StronaStartowa.png)
 
