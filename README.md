@@ -1,6 +1,11 @@
 # Pokemon Idź
 ### Web Pokemon Go (but slightly less extended ;) )
 
+Used technologies:
+- ReactJs
+- Axios
+- PokemonAPI
+
 If you want to run this project:
 - git clone [repository]
 - npm install (in repository directory)
